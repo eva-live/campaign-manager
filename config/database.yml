@@ -13,8 +13,8 @@ development:
   database: <%= ENV['DB_NAME'] || 'rtb4free_dev' %>
   port: <%= ENV['DB_PORT'] || 3306 %>
   host: <%= ENV['DB_HOST'] || 'localhost' %>
-  username: <%= ENV['DB_USERNAME'] || 'rtb4free' %>
-  password: <%= ENV['DB_PASSWORD'] || 'rtb4free' %>
+  username: <%= ENV['DB_USERNAME'] || 'ben' %>
+  password: <%= ENV['DB_PASSWORD'] || 'test' %>
 
 test:
   <<: *default
