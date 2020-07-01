@@ -1,4 +1,4 @@
-FROM ruby:2.4.6
+FROM ruby:2.7
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 RUN mkdir /campaign-manager
 WORKDIR /campaign-manager
