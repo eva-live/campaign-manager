@@ -5,6 +5,8 @@ WORKDIR /campaign-manager
 COPY Gemfile /campaign-manager/Gemfile
 COPY Gemfile.lock /campaign-manager/Gemfile.lock
 RUN bundle install
+RUN bundle exec rake test:prepare 
+RUN bundle exec rake db:migrate
 COPY . /campaign-manager
 EXPOSE 3000
 
