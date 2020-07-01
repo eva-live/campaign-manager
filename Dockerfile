@@ -3,10 +3,9 @@ RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 RUN mkdir /campaign-manager
 WORKDIR /campaign-manager
 COPY Gemfile /campaign-manager/Gemfile
-COPY Gemfile.lock /campaign-manager/Gemfile.lock
-RUN bundle install
-RUN bundle exec rake test:prepare 
+COPY Gemfile.lock /campaign-manager/Gemfile.lock 
 RUN bundle exec rake db:migrate
+RUN bundle install
 COPY . /campaign-manager
 EXPOSE 3000
 
