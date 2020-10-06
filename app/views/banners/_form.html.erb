@@ -191,7 +191,7 @@
       { label: "Content Type",  include_blank: true }, 
       {class: "input-sm nosearch" } 
   %>
-  <%= f.text_field :iurl, label: "Image URL", class: "input-sm" %>
+  <%= f.text_field :iurl, label: "Image URL", class: "input-sm", value: "$EXTERNAL/images/wxh.jpg?adid={ad_id}&bidid={bid_id}"%>
     
     <span style="display:none"><%= f.text_area :htmltemplate, label: " " %></span>
     <div class="form-group">

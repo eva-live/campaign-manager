@@ -1,0 +1,43 @@
+#
+# To create database
+#       docker-compose run web rake db:setup
+#
+# Execute command to start mysql and rails:
+#       docker-compose up
+#
+version: "3.6"
+services:
+
+  
+
+  db:
+    #image: ploh/mysqlrtb
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_ROOT_PASSWORD=Money112*
+      - MYSQL_DATABASE=rtb4free
+      - MYSQL_USER=dev
+      - MYSQL_PASSWORD=Dev123*
+
+    ports:
+        - "3306:3306"
+        
+  web:
+    image: evalive/campaign-manager
+    #image: ploh/rtbadmin_open
+    ports:
+      - "3000:3000"
+    environment:
+      - CUSTOMER_NAME=Eva
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_USERNAME=dev
+      - DB_PASSWORD=Dev123*
+      - DB_NAME=rtb4free
+      - ELASTICSEARCH_ENABLE=true
+      - ELASTICSEARCH_HOST=elastic1:9200
+      - ELASTICSEARCH_KIBANA_URL=http://kibana:5601/
+      - RTB_CROSSTALK_REGION_HOSTS={"US" => "crosstalk"}
+    depends_on:
+      - db

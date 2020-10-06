@@ -32,10 +32,10 @@ env_replace("BIDDER_TIME_OFFSET",0,"number")
 #
 # Defaults for docker deploy
 #
-env_replace("RTB4FREE_DATABASE_HOST","localhost")
+env_replace("RTB4FREE_DATABASE_HOST","db")
 env_replace("RTB4FREE_DATABASE_PORT",3306,"number")
-env_replace("RTB4FREE_DATABASE_USERNAME","root")
-env_replace("RTB4FREE_DATABASE_PASSWORD","")
+env_replace("RTB4FREE_DATABASE_USERNAME","dev")
+env_replace("RTB4FREE_DATABASE_PASSWORD","Dev123*")
 env_replace("RTB4FREE_DATABASE_NAME","rtb4free")
 
 

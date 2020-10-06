@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190611202618) do
+ActiveRecord::Schema.define(version: 20201005221206) do
 
   create_table "attachments", force: :cascade do |t|
     t.string   "filename",     limit: 255
