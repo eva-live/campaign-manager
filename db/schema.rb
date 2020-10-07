@@ -289,6 +289,10 @@ ActiveRecord::Schema.define(version: 20201005221206) do
     t.text     "devicetype",           limit: 65535
     t.text     "IAB_category",         limit: 65535
     t.text     "IAB_category_blklist", limit: 65535
+    t.text     "age",                  limit: 65535
+    t.text     "sex",                  limit: 65535
+    t.text     "education",            limit: 65535
+    t.text     "interest",             limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name",                 limit: 255

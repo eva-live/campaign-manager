@@ -357,7 +357,8 @@ class Exchange < ActiveRecord::Base
                     }
                 ]
             },
-            { name: "adlithium" },
+			{ name: "adlithium" },
+			{ name: "xapads" },
             { name: "vertamedia" },
             { name: "vdopia" },
             { name: "tappx" },

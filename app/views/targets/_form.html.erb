@@ -89,6 +89,38 @@
             } 
   %>
   
+  <%= render :partial => 'form_csv', 
+  :locals => {
+      :value => @target[:age], 
+      :label => "Age",
+      :tag_id => "age[]",
+      :collection=>Age.all.sort_by {|obj| obj[:description]}.collect { |v| [ v[:description], v[:value] ] } 
+    } 
+%>
+<%= render :partial => 'form_csv', 
+  :locals => {
+      :value => @target[:sex], 
+      :label => "Sex",
+      :tag_id => "sex[]",
+      :collection=>Sex.all.sort_by {|obj| obj[:description]}.collect { |v| [ v[:description], v[:value] ] } 
+    } 
+%>
+<%= render :partial => 'form_csv', 
+  :locals => {
+      :value => @target[:education], 
+      :label => "Education",
+      :tag_id => "education[]",
+      :collection=>Education.all.sort_by {|obj| obj[:description]}.collect { |v| [ v[:description], v[:value] ] } 
+    } 
+%>
+<%= render :partial => 'form_csv', 
+  :locals => {
+      :value => @target[:interests], 
+      :label => "Interests",
+      :tag_id => "interests[]",
+      :collection=>Interests.all.sort_by {|obj| obj[:description]}.collect { |v| [ v[:description], v[:value] ] } 
+    } 
+%>
   <div class="actions">
     <div class="col-sm-2"></div>
     <div class="col-sm-10">

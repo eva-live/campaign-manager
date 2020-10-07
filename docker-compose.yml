@@ -8,64 +8,7 @@
 version: "3.6"
 services:
 
-  zookeeper:
-    image: "zookeeper"
-
-  kafka:
-    image: "ches/kafka"
-    environment:
-      ZOOKEEPER_IP: "zookeeper"
-      LOG_RETENTION_HOURS: "12"
-    depends_on:
-      - zookeeper
-
-  zerospike:
-    image: "jacamars/zerospike:v1"
-    environment:
-      BROKERLIST: "kafka:9092"
-    depends_on:
-      - kafka
-    command: bash -c "sleep 5 && ./wait-for-it.sh kafka:9092 -t 120 && sleep 1; ./zerospike"
-
-  bidder:
-    image: "evalive/bidder"
-    environment:
-      FRAUDTYPE: ""
-      FRAUDTHRESHOLD: "100"
-      FRAUDKEY: "3149650265"
-      FRAUDENDPOINT: "http://direct.anura.io"
-      FRAUDBIDONERROR: "false"
-      FRAUDCONNECTIONS: ""
-      FRAUDWATCHLIST: ""
-      BROKERLIST: "kafka:9092"
-      PUBSUB: "zerospike"
-      EXTERNAL: "http://bidder.eva.live"
-      ADMINPORT: "0"
-      ACCOUNTING: "accountingsystem"
-      FREQGOV: "false"
-      INDEXPAGE: "/index.html"
-      GOOGLE_EKEY: "sIVC1dFAkID9xxts1rsSLbYrG5CLyqr47ds1z1kSnEE="
-      GOOGLE_IKEY: "sjKraLOzHwXlFDr51EjntT1ZdOonExMPvV/WQ/39QCo="
-    ports:
-            - "80:8080"
-    depends_on:
-      - kafka
-      - zerospike
-    command: bash -c "sleep 5 && ./wait-for-it.sh kafka:9092 -t 120 && ./wait-for-it.sh zerospike:6000 -t 120 && sleep 1; ./rtb4free"
-
-  crosstalk:
-    image: "jacamars/crosstalk:v1"
-    environment:
-      REGION: "US"
-      GHOST: "elastic1"
-      AHOST: "elastic1"
-      BROKERLIST: "kafka:9092"
-      PUBSUB: "zerospike"
-      CONTROL: "8100"
-      JDBC: "jdbc:mysql://db/rtb4free?user=dev&password=Dev123*"
-    depends_on:
-      - kafka
-      - zerospike
+  
 
   db:
     #image: ploh/mysqlrtb
@@ -76,19 +19,17 @@ services:
       - MYSQL_DATABASE=rtb4free
       - MYSQL_USER=dev
       - MYSQL_PASSWORD=Dev123*
-    volumes:
-      - my-datavolume:/var/lib/mysql
+
     ports:
         - "3306:3306"
         
   web:
     image: evalive/campaign-manager
     #image: ploh/rtbadmin_open
-    command: bash -c "./wait_for_it.sh db:3306 --timeout=120; bundle exec rails s -p 3000 -b '0.0.0.0' -e development"
     ports:
       - "3000:3000"
     environment:
-      - CUSTOMER_NAME=
+      - CUSTOMER_NAME=Eva
       - DB_HOST=db
       - DB_PORT=3306
       - DB_USERNAME=dev
@@ -100,31 +41,3 @@ services:
       - RTB_CROSSTALK_REGION_HOSTS={"US" => "crosstalk"}
     depends_on:
       - db
-      
-  elastic1:
-    image: ploh/elastic_pwd    #  from docker.elastic.co/elasticsearch/elasticsearch:6.2.2,  added demo data
-    environment:
-      - xpack.security.enabled=false
-      - discovery.type=single-node
-      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
-    ports:
-            - "9200:9200"
-      
-  logstash1:
-    image: ploh/logstash_pwd
-    environment:
-      - "XPACK_MONITORING_ELASTICSEARCH_URL=http://elastic1:9200"
-      - "XPACK_MONITORING_ENABLED=true"
-      
-  kibana:
-    image: docker.elastic.co/kibana/kibana:6.2.2
-    environment:
-      - SERVER_NAME=elastic1
-      - ELASTICSEARCH_URL=http://elastic1:9200
-    volumes:
-      - my-datavolume:/var/lib/kibana
-    ports:
-      - "5601:5601"
-      
-volumes:
-  my-datavolume:

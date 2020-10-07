@@ -69,7 +69,29 @@
                 :label => "IAB Categories - Blacklist",
             } 
   %>
-    
 
-  
+  <%= render :partial => 'showform_textrow', 
+            :locals => {
+                :value => @target[:age], 
+                :label => "Age",
+            } 
+  %>
+  <%= render :partial => 'showform_textrow', 
+            :locals => {
+                :value => @target[:sex], 
+                :label => "Sex",
+            } 
+  %>
+  <%= render :partial => 'showform_textrow', 
+            :locals => {
+                :value => @target[:education], 
+                :label => "Education",
+            } 
+  %>
+  <%= render :partial => 'showform_textrow', 
+            :locals => {
+                :value => @target[:interests], 
+                :label => "Interests",
+            } 
+  %>          
 <% end %>

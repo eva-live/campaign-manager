@@ -4310,8 +4310,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', end
 }
 .panel.panel-pink > .panel-heading {
   color: #FFFFFF;
-  background: #bf3773;
-  border-color: #bf3773 !important;
+  background: #37bf74;
+  border-color: #37bf6b !important;
 }
 .panel.panel-pink > .panel-footer {
   color: #FFFFFF;
@@ -4319,7 +4319,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', end
   border-color: #bf3773 !important;
 }
 .panel.panel-violet {
-  border-color: #9351ad;
+  border-color: #09010c;
 }
 .panel.panel-violet > .panel-heading {
   color: #FFFFFF;
@@ -4428,13 +4428,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', end
 }
 .btn-outlined.btn-green {
   background: none;
-  border: 1px solid #488c6c;
-  color: #488c6c;
+  border: 1px solid #0a0a0a;
+  color: #24b644;
 }
 .btn-outlined.btn-yellow {
   background: none;
-  border: 1px solid #f2994b;
-  color: #f2994b;
+  border: 1px solid #52453b;
+  color: #0a0908;
 }
 .btn-outlined.btn-blue {
   background: none;
@@ -4443,18 +4443,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', end
 }
 .btn-outlined.btn-pink {
   background: none;
-  border: 1px solid #bf3773;
-  color: #bf3773;
+  border: 1px solid #030303;
+  color: #37bf3e;
 }
 .btn-outlined.btn-violet {
   background: none;
-  border: 1px solid #9351ad;
+  border: 1px solid #0a0a0a;
   color: #9351ad;
 }
 .btn-outlined.btn-grey {
   background: none;
   border: 1px solid #4b5d67;
-  color: #4b5d67;
+  color: #4b6979;
 }
 .btn-outlined.btn-dark {
   background: none;
